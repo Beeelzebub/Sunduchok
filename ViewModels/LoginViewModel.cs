@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Сундучок.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : AccountViewModel
     {
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        public string UserName { get; set; }
+        public override string LoginUserName { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public override string LoginPassword { get; set; }
 
-        public bool RememberMe { get; set; }
+        public override bool RememberMe { get; set; }
     }
 }

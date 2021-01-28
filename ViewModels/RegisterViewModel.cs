@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace Сундучок.ViewModels
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : AccountViewModel
     {
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        public string FirstName { get; set; }
+        public override string FirstName { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        public string SecondName { get; set; }
+        public override string SecondName { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        public string UserName { get; set; }
+        public override string RegisterUserName { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть заполнено")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public override string RegisterPassword { get; set; }
     }
 }

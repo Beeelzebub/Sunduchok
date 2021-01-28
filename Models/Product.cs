@@ -11,7 +11,16 @@ namespace Сундучок.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+
+        public Picture Picture { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
+        public List<Review> Reviews { get; set; }
+
+        public Product()
+        {
+            Reviews = new List<Review>();
+        }
+
     }
 }

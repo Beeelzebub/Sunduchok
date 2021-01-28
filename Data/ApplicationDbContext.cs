@@ -34,15 +34,43 @@ namespace Сундучок.Data
                     new OrderStatus { Id = 2, Name = "отправлен"},
                     new OrderStatus { Id = 3, Name = "прибыл"}
                 });
-            _ = modelBuilder.Entity<ProductType>().HasData(
+            modelBuilder.Entity<ProductType>().HasData(
                 new ProductType[]
                 {
-                    new ProductType {Id = 1, Name = ""},
-                    new ProductType {Id = 2, Name = ""},
-                    new ProductType {Id = 3, Name = ""},
-                    new ProductType {Id = 4, Name = ""},
-                    new ProductType {Id = 5, Name = ""},
-                    new ProductType {Id = 6, Name = ""},
+                    new ProductType {Id = 1, Name = "Техника"},
+                    new ProductType {Id = 2, Name = "Одежда"},
+                    new ProductType {Id = 3, Name = "Обувь"},
+                    new ProductType {Id = 4, Name = "Литература"},
+                    new ProductType {Id = 5, Name = "Канцелярия"},
+                    new ProductType {Id = 6, Name = "Прочее"},
+                });
+            modelBuilder.Entity<Product>().HasData(
+                new Product[]
+                {
+                    new Product 
+                    {
+                        Id = 1, 
+                        Name = "Xiaomi Redmi Note 9 Pro", 
+                        Price = 499, 
+                        ProductTypeId = 1,
+                        Picture = null
+                    },
+                    new Product
+                    {
+                        Id = 2,
+                        Name = "Adidas Superstar",
+                        Price = 150,
+                        ProductTypeId = 3,
+                        Picture = null
+                    },
+                    new Product
+                    {
+                        Id = 3, 
+                        Name = "Программирование на C# для начинающих А. Н. Васильев",
+                        Price = 39,
+                        ProductTypeId = 4,
+                        Picture = null
+                    }
                 });
 
 
