@@ -147,17 +147,23 @@ a#scrollUp i{
 	background:#CE3C2D;
 }
 
+.content-center {
+	-ms-flex-pack: center !important;
+	justify-content: center !important;
+}
+
 .header-middle .container .row {
-  border-bottom: 1px solid #f5f5f5;
-  margin-left: 0;
-  margin-right: 0;
-  padding-bottom: 20px;
-  padding-top: 20px;
+	border-bottom: 1px solid #f5f5f5;
+	margin-left: 0;
+	margin-right: 0;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .header-middle .container .row .col-sm-4{
   padding-left: 0;
 }
+
 
 .header-middle .container .row .col-sm-8 {
 	padding-right:0;
@@ -310,6 +316,10 @@ ul.sub-menu {
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	display: none;
 	z-index: 999;
+}
+
+.dropdown-link {
+	background-color: inherit !important;
 }
 
 .dropdown ul.sub-menu li .active{
@@ -1465,19 +1475,20 @@ h2.title {
 }
 
 
+
 .login-form form input, .signup-form form input {
-  background: #F0F0E9;
-  border: medium none;
-  color: #696763;
-  display: block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  height: 40px;
-  margin-bottom: 10px;
-  outline: medium none;
-  padding-left: 10px;
-  width: 100%;
+	background: #F0F0E9;
+	border: medium none;
+	color: #696763;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	height: 40px;
+	margin-bottom: 10px;
+	outline: medium none;
+	padding-left: 10px;
+	width: 100%;
 }
 
 .login-form form span{

@@ -8,16 +8,19 @@ using Сундучок.Data;
 
 namespace Сундучок.Controllers
 {
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         private ApplicationDbContext _context;
 
-        public ProductController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Index()
         {

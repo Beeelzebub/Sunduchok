@@ -53,9 +53,29 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                                <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-lock"></i> Войти</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="dropdown">
+                                        <a asp-controller="Home" asp-action="Index"><i class="fa fa-user"></i>@User.Identity.Name<i class="fa fa-angle-down"></i></a>
+
+                                        <ul class="sub-menu" role="menu">
+                                            @if (User.IsInRole("admin"))
+                                            {
+                                                <li><a class="dropdown-link" asp-controller="Products" asp-action="ProductsList">Все товары</a></li>
+                                                <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Добавить товар</a></li>
+                                                <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Заказы для отправки</a></li>
+                                               
+                                            }
+                                            <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Мои заказы</a></li><br />
+                                            <li><a class="dropdown-link" asp-controller="Account" asp-action="Logout">Выход</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-lock"></i> Войти</a></li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -103,13 +123,13 @@
     </div>
 
 
-        <script src="~/js/jquery.js"></script>
-        <script src="~/js/bootstrap.min.js"></script>
-        <script src="~/js/jquery.scrollUp.min.js"></script>
-        <script src="~/js/price-range.js"></script>
-        <script src="~/js/jquery.prettyPhoto.js"></script>
-        <script src="~/js/main.js"></script>
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <script src="~/js/price-range.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/main.js"></script>
 
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
