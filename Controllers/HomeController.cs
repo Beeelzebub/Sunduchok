@@ -25,7 +25,9 @@ namespace Сундучок.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var products = await _context.Products.Take(12).ToListAsync();
+            var products = await _context.Products
+                .Include(p => p.Picture)
+                .Take(12).ToListAsync();
 
             return View(products);
         }

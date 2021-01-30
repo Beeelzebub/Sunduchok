@@ -1,11 +1,12 @@
-﻿@model Сундучок.ViewModels.CreateProductViewModel
+﻿@model Сундучок.ViewModels.EditProductViewModel
 
-<h2 class="title text-center">Добавление товара</h2>
+
+<h2 class="title text-center">Редактирование</h2>
 
 <div class="content-center">
-
-    <form asp-action="Create" enctype="multipart/form-data">
+    <form asp-action="Edit" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <input asp-for="Name" class="form-control" placeholder="Название" />
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -29,7 +30,7 @@
 
         <div class="content-center">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary">Применить</button>
             </div>
         </div>
     </form>

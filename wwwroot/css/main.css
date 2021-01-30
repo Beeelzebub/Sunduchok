@@ -148,8 +148,9 @@ a#scrollUp i{
 }
 
 .content-center {
-	-ms-flex-pack: center !important;
-	justify-content: center !important;
+	width: 30% !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 }
 
 .header-middle .container .row {
@@ -1591,6 +1592,29 @@ h2.title {
   margin-bottom: 50px
 }
 
+.mng-header {
+	background: #FE980F;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: normal;
+}
+
+.w-15 {
+	width: 15%;
+}
+
+.w-10 {
+	width: 10%;
+}
+
+.w-20 {
+	width: 20%;
+}
+
+.w-30 {
+	width: 30%;
+}
 
 #cart_items .cart_info .cart_menu {
   background: #FE980F;
@@ -1918,6 +1942,7 @@ h2.title {
   margin-right: 15px;
   margin-top: 20px;
 }
+
 
 
 .form-two, .form-one {

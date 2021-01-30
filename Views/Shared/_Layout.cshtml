@@ -62,7 +62,7 @@
                                         <ul class="sub-menu" role="menu">
                                             @if (User.IsInRole("admin"))
                                             {
-                                                <li><a class="dropdown-link" asp-controller="Products" asp-action="ProductsList">Все товары</a></li>
+                                                <li><a class="dropdown-link" asp-controller="Products" asp-action="Management">Все товары</a></li>
                                                 <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Добавить товар</a></li>
                                                 <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Заказы для отправки</a></li>
                                                
@@ -98,8 +98,8 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html">Главная</a></li>
-                                <li><a href="index.html">Магазин</a></li>
+                                <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
+                                <li><a asp-controller="Products" asp-action="Index">Магазин</a></li>
                                 <li><a href="index.html">Контакты</a></li>
                             </ul>
                         </div>

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Сундучок.Models;
@@ -44,6 +46,24 @@ namespace Сундучок.Data
                     new ProductType {Id = 5, Name = "Канцелярия"},
                     new ProductType {Id = 6, Name = "Прочее"},
                 });
+            modelBuilder.Entity<Picture>().HasData(
+                new Picture[]
+                {
+                    new Picture {
+                        Id = 1,
+                        Image = File.ReadAllBytes("wwwroot/images/note9_pro_2-1000x1000.jpg") 
+                    },
+                    new Picture 
+                    {
+                        Id = 2,
+                        Image = File.ReadAllBytes("wwwroot/images/kisspng-adidas-stan-smith-adidas-superstar-sneakers-shoe-asics-logo-white-5b557f05a73706.8726018415323297336849.jpg") 
+                    },
+                    new Picture 
+                    {
+                        Id = 3,
+                        Image = File.ReadAllBytes("wwwroot/images/9785040925193 - .jpg") 
+                    }
+                });
             modelBuilder.Entity<Product>().HasData(
                 new Product[]
                 {
@@ -53,7 +73,7 @@ namespace Сундучок.Data
                         Name = "Xiaomi Redmi Note 9 Pro", 
                         Price = 499, 
                         ProductTypeId = 1,
-                        Picture = null
+                        PictureId = 1
                     },
                     new Product
                     {
@@ -61,7 +81,7 @@ namespace Сундучок.Data
                         Name = "Adidas Superstar",
                         Price = 150,
                         ProductTypeId = 3,
-                        Picture = null
+                        PictureId = 2
                     },
                     new Product
                     {
@@ -69,7 +89,7 @@ namespace Сундучок.Data
                         Name = "Программирование на C# для начинающих А. Н. Васильев",
                         Price = 39,
                         ProductTypeId = 4,
-                        Picture = null
+                        PictureId = 3
                     }
                 });
 

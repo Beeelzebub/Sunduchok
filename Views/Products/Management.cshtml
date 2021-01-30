@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Сундучок.Models.Product>
+
+@{
+    ViewData["Title"] = "Management";
+}
+
+<h2 class="title text-center">Все товары</h2>
+
+<table class="table">
+    <thead>
+        <tr class="mng-header">
+            <th class="w-10">
+
+            </th>
+            <th class="w-20">
+                Название
+            </th>
+            <th class="w-30">
+                Описание
+            </th>
+            <th class="w-15">
+                Тип
+            </th>
+            <th class="w-15">
+                Цена
+            </th>
+            <th class="w-15"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="w-10">
+                    <img width="82" height="82" src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Picture.Image))" alt="" />
+                </td>
+                <td class="w-20">
+                    @item.Name
+                </td>
+                <td class="w-30">
+                    @item.Description
+                </td>
+                <td class="w-15">
+                    @item.ProductType.Name
+                </td>
+                <td class="w-15">
+                    @item.Price бр
+                </td>
+                <td class="w-15">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
