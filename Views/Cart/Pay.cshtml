@@ -1,0 +1,47 @@
+﻿
+
+<div class="container">
+    <h2 class="title text-center">Оплата</h2>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h3 class="text-center">Детали платежа</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Номер карты</label>
+                                    <div class="input-group"> <input type="tel" class="form-control" placeholder="Введите номер карты" /> <span class="input-group-addon"><span class="fa fa-credit-card"></span></span> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6">
+                                <div class="form-group"> <label>Срок действия</label> <input type="tel" class="form-control" placeholder="MM / YY" /> </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6 pull-right">
+                                <div class="form-group"> <label>CVС</label> <input type="tel" class="form-control" placeholder="CVC" /> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"> <label>Владелец карты</label> <input type="text" class="form-control" placeholder="Введите имя" /> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-12"> <a asp-action="Pay" class="btn btn-success btn-lg btn-block">Оплатить</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

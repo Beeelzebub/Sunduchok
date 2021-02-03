@@ -57,7 +57,7 @@ namespace Сундучок.Controllers
                 await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(Management));
             }
 
             return View(model);

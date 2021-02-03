@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Сундучок.Migrations
 {
-    public partial class qweee : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,13 @@ namespace Сундучок.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Street = table.Column<string>(nullable: true),
+                    Hous = table.Column<int>(nullable: false),
+                    Porch = table.Column<int>(nullable: true),
+                    Apartment = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,19 +64,6 @@ namespace Сундучок.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderStatuses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderStatuses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,12 +205,10 @@ namespace Сундучок.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StartDate = table.Column<DateTime>(nullable: false),
-                    EndTime = table.Column<DateTime>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
                     CustomerId1 = table.Column<string>(nullable: true),
-                    SellerId = table.Column<int>(nullable: false),
-                    SellerId1 = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<int>(nullable: false),
+                    Cart = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -231,12 +222,6 @@ namespace Сундучок.Migrations
                     table.ForeignKey(
                         name: "FK_Orders_AspNetUsers_CustomerId1",
                         column: x => x.CustomerId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_SellerId1",
-                        column: x => x.SellerId1,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -297,16 +282,6 @@ namespace Сундучок.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.InsertData(
-                table: "OrderStatuses",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "оплачен" },
-                    { 2, "отправлен" },
-                    { 3, "прибыл" }
                 });
 
             migrationBuilder.InsertData(
@@ -397,11 +372,6 @@ namespace Сундучок.Migrations
                 column: "CustomerId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_SellerId1",
-                table: "Orders",
-                column: "SellerId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_PictureId",
                 table: "Products",
                 column: "PictureId");
@@ -441,9 +411,6 @@ namespace Сундучок.Migrations
 
             migrationBuilder.DropTable(
                 name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "OrderStatuses");
 
             migrationBuilder.DropTable(
                 name: "Review");

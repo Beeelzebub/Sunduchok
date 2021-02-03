@@ -24,6 +24,27 @@ namespace Сундучок.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Pay()
+        {
+            Address address = HttpContext.Session.Get<Address>("address");
+            var user = await _userManager.GetUserAsync(User);
+
+            Order order = new Order
+            {
+                Address = address,
+                Customer = user,
+                StartDate = DateTime.Now,
+                Cart = HttpContext.Session.GetSessionString("cart")
+            };
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            HttpContext.Session.Set<Cart>("cart", null);
+
+            return View("PayInfo", order.Id);
+        }
+
         public IActionResult Index()
         {
             Cart cart = HttpContext.Session.Get<Cart>("cart");
@@ -73,7 +94,6 @@ namespace Сундучок.Controllers
                 HttpContext.Session.Set<Address>("address", address);
 
                 return View("Pay");
-                
             }
 
             return View(model);

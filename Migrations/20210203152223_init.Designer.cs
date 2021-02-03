@@ -10,8 +10,8 @@ using Сундучок.Data;
 namespace Сундучок.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210129075717_123")]
-    partial class _123
+    [Migration("20210203152223_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,6 +159,24 @@ namespace Сундучок.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Apartment")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Hous")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Porch")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
@@ -174,19 +192,13 @@ namespace Сундучок.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Cart")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("CustomerId1")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SellerId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("StartDate")
@@ -198,41 +210,7 @@ namespace Сундучок.Migrations
 
                     b.HasIndex("CustomerId1");
 
-                    b.HasIndex("SellerId1");
-
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Сундучок.Models.OrderStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderStatuses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "оплачен"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "отправлен"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "прибыл"
-                        });
                 });
 
             modelBuilder.Entity("Сундучок.Models.Picture", b =>
@@ -532,10 +510,6 @@ namespace Сундучок.Migrations
                     b.HasOne("Сундучок.Models.User", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId1");
-
-                    b.HasOne("Сундучок.Models.User", "Seller")
-                        .WithMany()
-                        .HasForeignKey("SellerId1");
                 });
 
             modelBuilder.Entity("Сундучок.Models.Product", b =>
