@@ -1608,6 +1608,7 @@ h2.title {
 	width: 10%;
 }
 
+
 .w-20 {
 	width: 20%;
 }
@@ -1616,7 +1617,7 @@ h2.title {
 	width: 30%;
 }
 
-#cart_items .cart_info .cart_menu {
+.cart_info .cart_menu {
   background: #FE980F;
   color: #fff;
   font-size: 16px;
@@ -1624,16 +1625,16 @@ h2.title {
   font-weight: normal;
 }
 
-#cart_items .cart_info .table.table-condensed thead tr {
+.cart_info .table.table-condensed thead tr {
   height: 51px;
 }
 
 
-#cart_items .cart_info .table.table-condensed tr {
+.cart_info .table.table-condensed tr {
   border-bottom: 1px solid#F7F7F0
 }
 
-#cart_items .cart_info .table.table-condensed tr:last-child {
+.cart_info .table.table-condensed tr:last-child {
   border-bottom: 0
 }
 
@@ -1643,16 +1644,16 @@ h2.title {
 }
 
 
-#cart_items .cart_info .image {
+.cart_info .image {
   padding-left: 30px;
 }
 
 
-#cart_items .cart_info .cart_description h4 {
+.cart_info .cart_description h4 {
   margin-bottom: 0
 }
 
-#cart_items .cart_info .cart_description h4 a {
+.cart_info .cart_description h4 a {
   color: #363432;
   font-family: 'Roboto',sans-serif;
   font-size: 20px;
@@ -1665,13 +1666,13 @@ h2.title {
 }
 
 
-#cart_items .cart_info .cart_price p {
+.cart_info .cart_price p {
   color:#696763;
   font-size: 18px
 }
 
 
-#cart_items .cart_info .cart_total_price {
+.cart_info .cart_total_price {
   color: #FE980F;
   font-size: 24px;
 }

@@ -28,3 +28,12 @@ $(document).ready(function(){
 		});
 	});
 });
+
+function AddToCart(id) {
+	$.get('/Cart/Add', { Id: id }, function(data) {
+        $('#modal-info').html(data);
+        $('#smallModal').modal({
+            show: true
+        });
+    });
+}

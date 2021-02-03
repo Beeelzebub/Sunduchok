@@ -53,7 +53,7 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                                <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <li class="dropdown">
@@ -65,9 +65,10 @@
                                                 <li><a class="dropdown-link" asp-controller="Products" asp-action="Management">Все товары</a></li>
                                                 <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Добавить товар</a></li>
                                                 <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Заказы для отправки</a></li>
-                                               
+
                                             }
-                                            <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Мои заказы</a></li><br />
+                                            <li><a class="dropdown-link" asp-controller="Products" asp-action="Create">Мои заказы</a></li>
+                                            <br />
                                             <li><a class="dropdown-link" asp-controller="Account" asp-action="Logout">Выход</a></li>
                                         </ul>
                                     </li>
@@ -122,6 +123,20 @@
         </main>
     </div>
 
+    <div class="modal text-center fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content modal-borders">
+                <div class="modal-body">
+                    <h3 id="modal-info">Modal Body</h3>
+                </div>
+                <div class="modal-footer">
+                    <div class="container-fluid p-0 m-0">
+                        <button type="button" class="btn btn-block btn-default" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="~/js/jquery.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
