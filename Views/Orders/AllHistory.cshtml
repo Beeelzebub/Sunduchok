@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Order>
+
+<h2 class="title text-center">Все заказы</h2>
+@if (Model.Count() == 0)
+{
+    <span>История заказов пуста.</span>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr class="mng-header">
+                <th>
+                    Номер заказа
+                </th>
+                <th>
+                    Товар
+                </th>
+                <th>
+                    Дата заказа
+                </th>
+                <th>
+                    Покупатель
+                </th>
+                <th>
+                    Адрес доставки
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @foreach (CartLine cart in item.GetCartObject().Lines())
+                        {
+                            <p>@cart.Count x @cart.Product.Name</p>
+                        }
+                    </td>
+                    <td>
+                        @item.StartDate.ToShortDateString()
+                    </td>
+                    <td>
+                        @item.Customer.FirstName @item.Customer.SecondName <br />
+                        (@item.Address.PhoneNumber)
+                    </td>
+                    <td>
+                        @item.Address.ToString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

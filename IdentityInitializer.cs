@@ -21,7 +21,7 @@ namespace Сундучок
             }
             if (await userManager.FindByNameAsync("admin") == null)
             {
-                User admin = new User { UserName = "admin" };
+                User admin = new User { UserName = "admin", FirstName = "Иван", SecondName = "Встанька" };
                 IdentityResult result = await userManager.CreateAsync(admin, "admin");
                 if (result.Succeeded)
                 {
@@ -29,17 +29,6 @@ namespace Сундучок
                 }
 
             }
-            if (await userManager.FindByNameAsync("unknow") == null)
-            {
-                User unknow = new User { UserName = "unknow" };
-                IdentityResult result = await userManager.CreateAsync(unknow, "unknow");
-
-                if (result.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(unknow, "customer");
-                }
-            }
-
         }
     }
 }

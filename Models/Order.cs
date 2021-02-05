@@ -13,7 +13,7 @@ namespace Сундучок.Models
         public DateTime StartDate {get ; set;}
         
         [ForeignKey("User")]
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public User Customer { get; set; }
         public int AddressId { get; set; }
         public Address Address { get; set; }
