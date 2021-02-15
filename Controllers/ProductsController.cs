@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,11 +15,61 @@ namespace Сундучок.Controllers
 {
     public class ProductsController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, UserManager<User> userManager)
         {
+            _userManager = userManager;
             _context = context;
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products
+                .Where(p => p.Id == id)
+                .Include(p => p.Reviews)
+                .ThenInclude(r => r.User)
+                .Include(p => p.Picture)
+                .Include(p => p.ProductType)
+                .FirstOrDefaultAsync();
+
+            return PartialView(product);
+        }
+
+        public async Task<IActionResult> SendReview(string review, int? productId)
+        {
+            if (productId == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products
+                .Where(p => p.Id == productId)
+                .Include(p => p.Reviews)
+                .FirstOrDefaultAsync();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.Reviews.Add(new Review
+            {
+                User = await _userManager.GetUserAsync(User),
+                Date = DateTime.Now,
+                Text = review
+            });
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Details), new { id = productId });
         }
 
         public async Task<IActionResult> Create()

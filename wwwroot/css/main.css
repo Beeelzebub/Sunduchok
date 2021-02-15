@@ -1723,6 +1723,16 @@ h2.title {
   background:#FE980F
 }
 
+.product-overlay a {
+	color: #FFFFFF;
+	padding: 5px 7px;
+	font-size: 16px
+}
+
+.product-overlay a:hover {
+	color: black;
+	cursor: pointer;
+}
 
 .bg h2.title {
   margin-right:0;

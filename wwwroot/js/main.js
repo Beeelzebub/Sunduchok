@@ -37,3 +37,7 @@ function AddToCart(id) {
         });
     });
 }
+
+function GetDetails(id) {
+	$('#content').load('/Products/Details/' + id);
+}
