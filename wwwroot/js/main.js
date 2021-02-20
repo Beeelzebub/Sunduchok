@@ -41,3 +41,7 @@ function AddToCart(id) {
 function GetDetails(id) {
 	$('#content').load('/Products/Details/' + id);
 }
+
+function SendReview(id) {
+	$('#content').load('/Products/SendReview', { productId : id, review : $('#review').val() });
+}

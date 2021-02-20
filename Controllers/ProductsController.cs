@@ -52,6 +52,9 @@ namespace Сундучок.Controllers
             var product = await _context.Products
                 .Where(p => p.Id == productId)
                 .Include(p => p.Reviews)
+                .ThenInclude(r => r.User)
+                .Include(p => p.Picture)
+                .Include(p => p.ProductType)
                 .FirstOrDefaultAsync();
 
             if (product == null)
@@ -69,7 +72,7 @@ namespace Сундучок.Controllers
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Details), new { id = productId });
+            return PartialView("Details", product);
         }
 
         public async Task<IActionResult> Create()
