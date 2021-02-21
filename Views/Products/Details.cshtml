@@ -64,7 +64,7 @@ else
                 </div>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <p><b>Оставьте свой отзыв!</b></p>
+                        <p style="margin-top:50px"><b>Оставьте свой отзыв!</b></p>
 
                         <textarea id="review" name="review"></textarea>
                         <button onclick="SendReview(@Model.Id)" class="btn btn-default pull-right">

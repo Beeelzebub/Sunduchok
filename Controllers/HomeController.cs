@@ -8,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Сундучок.Data;
 using Сундучок.Models;
+using PagedList.Mvc;
+using PagedList;
+using Сундучок.ViewModels;
 
 namespace Сундучок.Controllers
 {
@@ -23,13 +26,22 @@ namespace Сундучок.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? p)
         {
             var products = await _context.Products
                 .Include(p => p.Picture)
-                .Take(12).ToListAsync();
+                .ToListAsync();
 
-            return View(products);
+            int currentPage = p ?? 1;
+
+            AssortmentViewModel model = new AssortmentViewModel
+            {
+                TotalPages = (int)((products.Count / 10)),
+                CurrentPage = currentPage,
+                Products = products.Skip(10 * (currentPage - 1)).Take(10).ToList()
+            };
+
+            return View(model);
         }
 
         public IActionResult Privacy()

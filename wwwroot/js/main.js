@@ -45,3 +45,12 @@ function GetDetails(id) {
 function SendReview(id) {
 	$('#content').load('/Products/SendReview', { productId : id, review : $('#review').val() });
 }
+
+function search() {
+	var searchInput = $('#searachString').val();
+	$('#content').load('/Products/Search', { searchName: searchInput });
+}
+
+function filter(filterString) {
+	$('#content').load('/Products/Filter', { filterString: filterString });
+}

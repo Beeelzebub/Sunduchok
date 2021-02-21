@@ -24,25 +24,31 @@ namespace Сундучок.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Pay()
+        [HttpPost]
+        public async Task<IActionResult> Pay(PayViewModel model)
         {
-            Address address = HttpContext.Session.Get<Address>("address");
-            var user = await _userManager.GetUserAsync(User);
-
-            Order order = new Order
+            if (ModelState.IsValid)
             {
-                Address = address,
-                Customer = user,
-                StartDate = DateTime.Now,
-                Cart = HttpContext.Session.GetSessionString("cart")
-            };
+                Address address = HttpContext.Session.Get<Address>("address");
+                var user = await _userManager.GetUserAsync(User);
 
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
+                Order order = new Order
+                {
+                    Address = address,
+                    Customer = user,
+                    StartDate = DateTime.Now,
+                    Cart = HttpContext.Session.GetSessionString("cart")
+                };
 
-            HttpContext.Session.Set<Cart>("cart", null);
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
 
-            return View("PayInfo", order.Id);
+                HttpContext.Session.Set<Cart>("cart", null);
+
+                return View("PayInfo", order.Id);
+            }
+
+            return View(model);
         }
 
         public IActionResult Index()

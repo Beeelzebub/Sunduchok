@@ -11,8 +11,6 @@ body {
 	background:;
 	position: relative;
 	font-weight: 400px;
-	margin-bottom: 60px;
-	min-height: 100% !important;
 }
 
 .footer {
@@ -966,8 +964,6 @@ h2.title {
   color: #fff;
 }
 
-
-
 .add-to-cart {
   background:#F5F5ED;
   border: 0 none;
@@ -1123,15 +1119,11 @@ h2.title {
 
 .pagination {
   display: inline-block;
-  margin-bottom: 25px;
-  margin-top: 0;
-  padding-left: 15px;
 }
 
 .pagination  li:first-child  a, .pagination  li:first-child  span {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  margin-left: 0;
 }
 
 .pagination  li:last-child  a, .pagination  li:last-child  span {
@@ -1139,25 +1131,41 @@ h2.title {
   border-top-right-radius: 0;
 }
 
-.pagination  .active  a, .pagination  .active  span, .pagination  .active  a:hover, .pagination  .active  span:hover, .pagination  .active  a:focus, .pagination  .active  span:focus {
-  background-color: #FE980F;
-  border-color: #FE980F;
-  color: #FFFFFF;
-  cursor: default;
-  z-index: 2;
+.sr-only {
+	display: none !important;
 }
 
-.pagination  li  a, .pagination  li  span {
-  background-color: #f0f0e9;
-  border: 0;
-  float: left;
-  line-height: 1.42857;
-  margin-left: -1px;
-  padding: 6px 12px;
-  position: relative;
-  text-decoration: none;
-  margin-right: 5px;
-  color:#000;
+.pagination .active a, .pagination .active span, .pagination .active a:hover, .pagination .active span:hover, .pagination .active a:focus, .pagination .active span:focus {
+	background-color: #FE980F;
+	border-color: #FE980F;
+	color: #FFFFFF;
+	cursor: default;
+	z-index: 2;
+}
+
+.pagination li a:hover span {
+	background-color: #FE980F;
+	color: #FFFFFF;
+	cursor: default;
+	z-index: 2;
+	cursor: default;
+}
+
+.pagination li .disabled:hover {
+	background-color: #f0f0e9;
+}
+
+.pagination li .disabled a:hover span {
+	background-color: #f0f0e9;
+}
+
+.pagination li a, .pagination li span, .pagination li .disabled {
+	background-color: #f0f0e9;
+	border: 0;
+	float: left;
+	position: relative;
+	text-decoration: none;
+	color: #000;
 }
 
 .pagination  li  a:hover{

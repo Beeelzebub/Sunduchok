@@ -1,4 +1,4 @@
-﻿
+﻿@model Сундучок.ViewModels.PayViewModel
 
 <div class="container">
     <h2 class="title text-center">Оплата</h2>
@@ -11,36 +11,69 @@
                         <h3 class="text-center">Детали платежа</h3>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <form role="form">
+                <form asp-action="Pay">
+                    <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label>Номер карты</label>
-                                    <div class="input-group"> <input type="tel" class="form-control" placeholder="Введите номер карты" /> <span class="input-group-addon"><span class="fa fa-credit-card"></span></span> </div>
+                                    <div class="input-group">
+                                        <input asp-for="CardNumber" class="form-control" placeholder="Введите номер карты" />
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 col-md-6">
-                                <div class="form-group"> <label>Срок действия</label> <input type="tel" class="form-control" placeholder="MM / YY" /> </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Срок действия</label>
+                                        <input asp-for="Date" class="form-control" placeholder="MM / YY" />
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="Date" class="text-danger"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xs-6 col-md-6 pull-right">
-                                <div class="form-group"> <label>CVС</label> <input type="tel" class="form-control" placeholder="CVC" /> </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>CVС</label>
+                                        <input asp-for="CVC" class="form-control" placeholder="CVC" />
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="CVC" class="text-danger"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="form-group"> <label>Владелец карты</label> <input type="text" class="form-control" placeholder="Введите имя" /> </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label>Владелец карты</label>
+                                        <input asp-for="Owner" class="form-control" placeholder="Введите имя" />
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="Owner" class="text-danger"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-xs-12"> <a asp-action="Pay" class="btn btn-success btn-lg btn-block">Оплатить</a> </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-xs-12"> <button type="submit" class="btn btn-success btn-lg btn-block">Оплатить</button> </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+
+                </form>
+
             </div>
         </div>
     </div>

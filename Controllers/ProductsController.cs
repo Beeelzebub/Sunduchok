@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Сундучок.Data;
 using Сундучок.Models;
 using Сундучок.ViewModels;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Сундучок.Controllers
 {
@@ -125,7 +127,7 @@ namespace Сундучок.Controllers
             }
 
             var product = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
-            
+
             if (product == null)
             {
                 return NotFound();
@@ -186,11 +188,22 @@ namespace Сундучок.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? p)
         {
-            var products = await _context.Products.Take(12).ToListAsync();
+            var products = await _context.Products
+                .Include(p => p.Picture)
+                .ToListAsync();
 
-            return View(products);
+            int currentPage = p ?? 1;
+
+            AssortmentViewModel model = new AssortmentViewModel
+            {
+                TotalPages = (int)((products.Count / 10)),
+                CurrentPage = currentPage,
+                Products = products.Skip(10 * (currentPage - 1)).Take(10).ToList()
+            };
+
+            return View(model);
         }
 
         public async Task<IActionResult> Management()
@@ -221,6 +234,39 @@ namespace Сундучок.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Management));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string searchName)
+        {
+            if (searchName == null)
+            {
+                searchName = "";
+            }
+
+            var products = await _context.Products
+                .Where(p => p.Name.Contains(searchName))
+                .Include(p => p.Picture)
+                .ToListAsync();
+
+            return PartialView("Assortment", products);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Filter(string filterString)
+        {
+            if (filterString == null)
+            {
+                filterString = "";
+            }
+
+            var products = await _context.Products
+                .Include(p => p.Picture)
+                .Include(p => p.ProductType)
+                .Where(p => p.ProductType.Name.Contains(filterString))
+                .ToListAsync();
+
+            return PartialView("Assortment", products);
         }
     }
 }
